@@ -6,6 +6,8 @@ class TweeetsController < ApplicationController
   def index
     @tweeets = Tweeet.all.order("created_at DESC")
     @tweeet = Tweeet.new
+    @users = User.all.sample(5)
+    print @users
   end
 
   # GET /tweeets/1

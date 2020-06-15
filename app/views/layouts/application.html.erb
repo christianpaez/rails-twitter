@@ -7,65 +7,55 @@
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.5.1.slim.min.js", integrity: "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", crossorigin: "anonymous" %>       
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js", integrity: "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", crossorigin: "anonymous" %>
+    <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js", integrity: "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", crossorigin: "anonymous" %>
+
   </head>
-
   <body>
-  <% if flash[:notice] %>
-    <div>
-      <p><%= notice %></p>
-    </div>
-  <% end %>
-
-  <% if flash[:alert] %>
-    <div>
-      <p><%= alert %></p>
-    </div>
-  <% end %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="navbar-brand">
-      <%= link_to root_path, class: "navbar-item"  do %>
-        <h1 class = "text-white">Twittter</h1>
+    <% if flash[:notice] %>
+      <div class="alert alert-info mb-0" role="alert">
+        <p><%= notice %></p>
+      </div>
     <% end %>
-    </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-
-    							<%= link_to 'New Tweeet', root_path, class: "text-white" %>
-      </li>
-      <% if user_signed_in?%>
-      
-      <li class="nav-item">
-        <p class = "text-white">Hi!, <%= current_user.name %></p>
-      </li>
-      <li class="nav-item">
-
-    							<%= link_to 'Logout', destroy_user_session_path,method: :delete, class: "text-white" %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-              							<%= link_to 'Sign Up', new_user_registration_path, class: "text-white" %>
-      </li>
-      <li class="nav-item">
-            							<%= link_to 'Sign In', new_user_session_path, class: "text-white" %>
-      </li>
-
-      <% end %>
-      
-      
-      
-      
-    
-    </ul>
-    
-  </div>
-</nav>
+    <% if flash[:alert] %>
+      <div class="alert alert-warning mb-0" role="alert">
+        <p><%= alert %></p>
+      </div>
+    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="navbar-brand">
+        <%= link_to root_path, class: "text-decoration-none" do %>
+          <h1 class = "text-white">Twittter</h1>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <%= link_to 'New Tweeet', root_path, class: "btn btn-light text-primary mr-2" %>
+          </li>
+          <% if user_signed_in?%>
+            <li class="nav-item">
+                <%= link_to "Hi, #{current_user.name}!", edit_user_registration_path, class: "btn text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Logout', destroy_user_session_path,method: :delete, class: "btn btn-danger" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_user_session_path, class: "text-white" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   
-
-  <%= yield %>
+    <%= yield %>
   </body>
 </html>

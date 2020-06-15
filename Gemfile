@@ -28,10 +28,10 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.5.0'
-gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'gravatar_image_tag'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

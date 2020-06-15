@@ -1,34 +1,19 @@
 <div class="col-md-3">
-	<div class="panel">
-		<p class="panel-heading">Who to Follow</p>
-	
-	
-		
-	</div>
-	<ul class="list-unstyled">
-  <li class="media">
-    <img src="https://bulma.io/images/placeholders/64x64.png" class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1"><strong>John Smith</strong></h5>
-								<small>@johnsmith</small>
-
-    </div>
-  </li>
-  <li class="media my-4">
-    <img src="https://bulma.io/images/placeholders/64x64.png" class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1"><strong>John Smith</strong></h5>
-								<small>@johnsmith</small>
-
-    </div>
-  </li>
-  <li class="media">
-    <img src="https://bulma.io/images/placeholders/64x64.png" class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1"><strong>John Smith</strong></h5>
-								<small>@johnsmith</small>
-
-    </div>
-  </li>
-</ul>
+  <h3>Who to follow</h3>
+  <ul class="list-unstyled">
+    <% if @users.size > 0 %>
+      <% @users.each do|user|%>
+      <li class="media mb-2">
+        <%= gravatar_image_tag(user.email, size: 64, alt: user.name, class: "mr-2") %>
+        <div class="media-body">
+          <h5 class="mt-0 mb-1"><strong><%= user.name%></strong></h5>
+          <small><%= user.username%></small>
+        </div>
+      </li>
+    <% end%>
+    <% else %>
+      No users yet :(
+    <% end %>
+    
+  </ul>
 </div>

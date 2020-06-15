@@ -1,0 +1,30 @@
+<div class="col-md-3">
+  <h3>Profile</h3>
+  <div class="media">
+    <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name, class: "mr-2") %>
+    <div class="media-body">
+      <h5 class="mt-0"><%= current_user.name %></h5>
+      <p>
+        <small><%= current_user.username %></small>
+      </p>
+    </div>
+  </div>
+  <div class = "row ml-0 mt-2">
+    <table class="table table-sm table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Tweeets</th>
+          <th scope="col">Following</th>
+          <th scope="col">Followers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= current_user.tweeets.count %></td>
+          <td>100</td>
+          <td>200</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
