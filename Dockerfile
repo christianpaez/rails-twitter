@@ -9,4 +9,4 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install rails bundler
 RUN bundle install
-CMD ["rails", "server"]
+CMD ["rails", "server", "-p",  ${PORT}]
