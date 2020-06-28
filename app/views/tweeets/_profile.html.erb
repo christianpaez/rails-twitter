@@ -1,5 +1,5 @@
 <div class="col-md-3">
-  <h3>Profile</h3>
+  <h3 class = "text-center">Profile</h3>
   <div class="media">
     <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name, class: "rounded-circle mr-2") %>
     <div class="media-body">
@@ -9,7 +9,7 @@
       </p>
     </div>
   </div>
-  <div class = "row ml-0 mt-2">
+  <div class = "row ml-0 mt-2 table-responsive">
     <table class="table table-sm table-borderless">
       <thead>
         <tr>
